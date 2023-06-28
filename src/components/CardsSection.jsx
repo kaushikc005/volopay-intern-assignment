@@ -1,7 +1,9 @@
 import React from 'react'
 import Cards from './Cards'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-const CardsSection = ({data,search,searchText,filter,type,cardHolder}) => {
+
+const CardsSection = ({data,search,searchText,filter,type,cardHolder,fetchData}) => {
     let filteredData=[]
     let searchedData=[]
     if(filter){
@@ -9,9 +11,17 @@ const CardsSection = ({data,search,searchText,filter,type,cardHolder}) => {
     }
 
     if(search)
-    searchedData=data?.filter((item) => item.name===searchText)
+    searchedData=data?.filter((item) => item.name.toLowerCase()===searchText.toLowerCase())
   return (
-    <section className='grid grid-cols-3 mx-10  z-0 absolute top-52'>
+<InfiniteScroll
+      dataLength={data?.length || 24}
+      next={fetchData}
+      hasMore={false}
+      loader={<p>Loading...</p>}
+      endMessage={<p>No more data to load.</p>}
+    >
+    <section className='lg:grid grid-cols-3 mx-10  z-0 absolute top-52'>
+        
         {!filter ?
         search?
         searchedData?.map((item,index)=> (
@@ -26,10 +36,8 @@ const CardsSection = ({data,search,searchText,filter,type,cardHolder}) => {
         <Cards item={item} key={index} />
     ))
     }
-
-        
-        
     </section>
+    </InfiniteScroll>
   )
 }
 

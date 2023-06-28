@@ -5,7 +5,7 @@ const Navbar = () => {
   const [selectedSection, setselectedSection] = useState("All");
   return (
     <header className="shadow-md w-screen">
-      <nav>
+      <nav className="w-full">
         <ul className="flex gap-8 mx-8 p-8 text-xl list-none">
           <li className={`${selectedSection==="Your"? `border-b-2 border-red-500`: `border-0`}`} 
           onClick={() => setselectedSection("Your")}>

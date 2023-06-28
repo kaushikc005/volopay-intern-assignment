@@ -15,20 +15,23 @@ function App() {
   const [cardHolder, setCardHolder] = useState(null);
   const [filter, setFilter] = useState(false);
 
-  const options={
-    limit
+  const fetchData = async () => {
+    const response = await fetch(
+      "https://my-json-server.typicode.com/kaushikc005/volopay/data?_page=1",{
+        params: {
+          _page: 1,
+          'X-Total-Count':10
+        }
+      }
+    );
+    console.log(response.headers.get('X-Total-Count'))
+    setData(await response.json());
   }
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://my-json-server.typicode.com/kaushikc005/volopay/data"
-      );
-      setData(await response.json());
-    };
-
     fetchData();
   }, []);
-  console.log(cardHolder);
+
+  console.log(data);
   console.log(type)
   return (
     <Router>
@@ -53,6 +56,7 @@ function App() {
               filter={filter}
               type={type}
               cardHolder={cardHolder}
+              fetchData={fetchData}
             />
           }
         />
