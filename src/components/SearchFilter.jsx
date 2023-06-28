@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { BsSearch, BsFilter } from "react-icons/bs";
-const SearchFilter = ({setSearch,setSearchText,setType, setCardHolder, setFilter ,search,searchText}) => {
-
+const SearchFilter = ({
+  setSearch,
+  setSearchText,
+  setType,
+  setCardHolder,
+  setFilter,
+  search,
+  searchText,
+}) => {
   const [showFilter, setShowFilter] = useState(false);
   const [cardtype, setCardType] = useState(null);
   const [holder, setHolder] = useState(null);
@@ -18,16 +25,18 @@ const SearchFilter = ({setSearch,setSearchText,setType, setCardHolder, setFilter
        bg-white shadow-lg p-4 z-10"
         onSubmit={handleSubmit}
       >
-        <div className="flex items-center justify-center gap-4">
-        <div>
-              <input
-                type="text"
-                placeholder="Enter card name"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                className={`bg-white outline-none ${search ? "block" : "hidden"}`}
-              />
-            </div>
+        <div className="flex sm:flex-col lg:flex-row items-center justify-center gap-4">
+          <div className="flex justify-center">
+            <input
+              type="text"
+              placeholder="Enter card name"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className={`bg-white outline-none text-center ${
+                search ? "block" : "hidden"
+              }`}
+            />
+          </div>
           <BsSearch
             className="text-2xl cursor-pointer"
             onClick={() => setSearch((prev) => !prev)}
@@ -36,7 +45,6 @@ const SearchFilter = ({setSearch,setSearchText,setType, setCardHolder, setFilter
             className="flex bg-gray-300 p-2 rounded-md cursor-pointer"
             onClick={(e) => setShowFilter((prev) => !prev)}
           >
-            
             <BsFilter className="text-2xl cursor-pointer" />
             <h1>Filter</h1>
           </article>
