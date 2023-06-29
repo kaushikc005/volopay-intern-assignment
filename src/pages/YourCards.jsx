@@ -8,7 +8,7 @@ const YourCards = ({ data }) => {
   );
 
   return (
-    <section className="lg:grid grid-cols-3 mx-10  z-0 absolute top-52">
+    <section className="lg:grid grid-cols-3 mx-auto  z-0 absolute top-52 lg:right-32">
       {yourData.map((item, index) => (
         <Cards item={item} key={index} />
       ))}

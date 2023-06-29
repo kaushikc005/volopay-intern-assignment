@@ -18,6 +18,12 @@ const SearchFilter = ({
     setCardHolder(holder);
     setFilter(true);
   };
+
+  const handleClear=()=>{
+    setFilter(false);
+  }
+
+ 
   return (
     <section className="w-screen flex justify-end p-4 bg-white relative ">
       <form
@@ -91,7 +97,8 @@ const SearchFilter = ({
             >
               Apply
             </button>
-            <button type="reset" className="p-2 px-4 bg-gray-300  rounded-md">
+            <button type="reset" className="p-2 px-4 bg-gray-300  rounded-md"
+            onClick={handleClear}>
               Clear
             </button>
           </nav>

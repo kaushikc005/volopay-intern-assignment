@@ -13,7 +13,7 @@ function App() {
   const [type, setType] = useState("");
   const [cardHolder, setCardHolder] = useState(null);
   const [filter, setFilter] = useState(false);
-
+  console.log(filter)
   const fetchData = async () => {
     const response = await fetch(
       "https://my-json-server.typicode.com/kaushikc005/volopay/data?_page=1",

@@ -16,26 +16,31 @@ const CardsSection = ({
   const [loaded,setLoaded]=useState(false)
   if (filter) {
     filteredData = data?.filter(
-      (item) => item.card_type === type || item.owner_id === cardHolder
+      (item) => item.card_type == type && item.owner_id == cardHolder
     );
   }
+
 
   if (search)
     searchedData = data?.filter(
       (item) => item.name.toLowerCase().includes(searchText.toLowerCase())
     );
+    console.log(type);
+    console.log(cardHolder);
+    console.log(filteredData)
+    
   return (
     <InfiniteScroll
-      dataLength={data?.length || 24}
+      dataLength={data?data.length:0}
       next={fetchData}
-      hasMore={true}
-      loader={<p className={`${loaded?'hidden':'block'}`}>Loading...</p>}
+      hasMore={false}
+      loader={<p>Loading...</p>}
       endMessage={<p >No more data to load.</p>}
     >
       <section className="lg:grid grid-cols-3 justify-center 
       items-center z-0 absolute top-52 lg:right-36"
       
-      onLoadCapture={()=>setLoaded(true)}>
+      onLoadedData={()=>setLoaded(true)}>
         {!filter
           ? search
             ? searchedData?.map((item, index) => (
