@@ -21,7 +21,7 @@ const CardsSection = ({
 
   if (search)
     searchedData = data?.filter(
-      (item) => item.name.toLowerCase() === searchText.toLowerCase()
+      (item) => item.name.toLowerCase().includes(searchText.toLowerCase())
     );
   return (
     <InfiniteScroll

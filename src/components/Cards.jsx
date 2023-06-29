@@ -46,10 +46,11 @@ const Cards = ({ item }) => {
           height="10px"
           className="rounded-full"
           data={[
-            { value: item.spent.value, color: "rgba(0,153,75)" },
+            { value: item.spent.value, 
+              color: "rgba(0,153,75)" },
             {
               value: item.available_to_spend.value,
-              description: "5.000",
+              
               color: "rgba(255,0,99)",
             },
           ]}
@@ -68,7 +69,7 @@ const Cards = ({ item }) => {
             <GoDotFill className="text-pink-600" />
             Available
           </p>
-          <p className="font-semibold">{item.spent.value} SGD</p>
+          <p className="font-semibold">{item.available_to_spend.value} SGD</p>
         </div>
       </section>
     </section>
