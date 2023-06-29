@@ -27,11 +27,12 @@ const CardsSection = ({
     <InfiniteScroll
       dataLength={data?.length || 24}
       next={fetchData}
-      hasMore={false}
+      hasMore={true}
       loader={<p>Loading...</p>}
-      endMessage={<p>No more data to load.</p>}
+      endMessage={<p >No more data to load.</p>}
     >
-      <section className="lg:grid grid-cols-3 mx-10  z-0 absolute top-52">
+      <section className="lg:grid grid-cols-3 justify-center 
+      items-center z-0 absolute top-52 lg:right-36">
         {!filter
           ? search
             ? searchedData?.map((item, index) => (
